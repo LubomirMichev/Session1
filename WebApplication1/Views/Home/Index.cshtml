@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<h2>Добре дошли</h2>
+@if (ViewBag.UserName != null)
+{
+    <p>Здравейте, @ViewBag.UserName</p>
+}
+else
+{
+    <form asp-action="SetUserName" method="post">
+        <label for="username">Въведете вашето име:</label>
+        <input type="text" id="userName" name="UserName" required />
+        <button type="submit">Запази</button>
+    </form>
+}
+
+<h2>Изберете предпобитание на тема:</h2>
+
+<form asp-action="SetCookie" method="post">
+    <button type="submit" name="preference" value="DarkMode">Тъмна тема</button>
+    <button type="submit" name="preference" value="LightMode">Светла тема</button>
+</form>
+
+<p>Вашата текуща тема: @ViewBag.UserPreference</p>
